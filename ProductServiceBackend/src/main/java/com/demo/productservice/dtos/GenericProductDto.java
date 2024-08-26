@@ -1,0 +1,17 @@
+package com.demo.productservice.dtos;
+
+import com.demo.productservice.models.BaseModel;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class GenericProductDto extends BaseModel {
+
+	private String title;
+	private int price;
+	private String category;
+	private String description;
+	private String image;
+}
