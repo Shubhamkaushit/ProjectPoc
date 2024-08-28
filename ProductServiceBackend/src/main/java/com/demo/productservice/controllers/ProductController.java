@@ -1,5 +1,7 @@
 package com.demo.productservice.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.productservice.dtos.FakeStoreProductDto;
 import com.demo.productservice.dtos.GenericProductDto;
-import com.demo.productservice.models.Product;
 import com.demo.productservice.services.ProductService;
 
 @RestController
@@ -34,9 +34,9 @@ public class ProductController {
 	 */
 
 	@GetMapping("/")
-	public Product getAllProducts() {
+	public List<GenericProductDto> getAllProducts() {
 
-		return null;
+		return productService.getAllProducts();
 	}
 
 	@GetMapping("/{id}")

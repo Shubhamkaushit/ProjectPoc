@@ -1,5 +1,7 @@
 package com.demo.productservice.services;
 
+import java.util.List;
+
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -7,14 +9,15 @@ import org.springframework.web.client.RestTemplate;
 
 import com.demo.productservice.dtos.FakeStoreProductDto;
 import com.demo.productservice.dtos.GenericProductDto;
-import com.demo.productservice.models.Product;
 
 @Service("fakeStoreProductService")
 public class FakeStoreProductService implements ProductService {
 
 	private RestTemplateBuilder restTemplateBuilder;
 
-	private String getProductUrl = "https://fakestoreapi.com/products/1";
+	private String getProductUrl = "https://fakestoreapi.com/products/{id}";
+	
+	private String getAllProductsUrl = "https://fakestoreapi.com/products";
 
 	FakeStoreProductService(RestTemplateBuilder restTemplateBuilder) {
 
@@ -22,8 +25,12 @@ public class FakeStoreProductService implements ProductService {
 	}
 
 	@Override
-	public Product getAllProducts() {
+	public List<GenericProductDto> getAllProducts() {
 		// TODO Auto-generated method stub
+		
+		RestTemplate restTemplate = restTemplateBuilder.build();
+		//ResponseEntity<List<FakeStoreProductDto>> responseEntity =
+		restTemplate.getForEntity(getAllProductsUrl, FakeStoreProductDto.class);
 		return null;
 	}
 	
@@ -49,7 +56,7 @@ public class FakeStoreProductService implements ProductService {
 		RestTemplate restTemplate = restTemplateBuilder.build();
 		
 		ResponseEntity<FakeStoreProductDto> responseEntity = 
-				restTemplate.getForEntity(getProductUrl, FakeStoreProductDto.class);
+				restTemplate.getForEntity(getProductUrl, FakeStoreProductDto.class, id);
 		
 		/*
 		 * FakeStoreProductDto fakeStoreProductDto = responseEntity.getBody();
