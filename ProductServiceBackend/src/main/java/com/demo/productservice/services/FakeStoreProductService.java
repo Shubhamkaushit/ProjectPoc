@@ -29,8 +29,8 @@ public class FakeStoreProductService implements ProductService {
 		// TODO Auto-generated method stub
 		
 		RestTemplate restTemplate = restTemplateBuilder.build();
-		//ResponseEntity<List<FakeStoreProductDto>> responseEntity =
-		restTemplate.getForEntity(getAllProductsUrl, FakeStoreProductDto.class);
+		ResponseEntity<List<FakeStoreProductDto>> responseEntity = null;
+		//restTemplate.getForEntity(getAllProductsUrl, FakeStoreProductDto.class);
 		return null;
 	}
 	
