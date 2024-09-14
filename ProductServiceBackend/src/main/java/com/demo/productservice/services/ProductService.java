@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.demo.productservice.customexceptions.ProductNotFoundException;
 import com.demo.productservice.dtos.GenericProductDto;
 
 @Service
@@ -11,9 +12,9 @@ public interface ProductService {
 
 	List<GenericProductDto> getAllProducts();
 
-	GenericProductDto getProductById(Long id);
+	GenericProductDto getProductById(Long id) throws ProductNotFoundException;
 
-	void deleteProduct(Long id);
+	GenericProductDto deleteProduct(Long id);
 
 	public GenericProductDto createProduct(GenericProductDto genericProductDto);
 
