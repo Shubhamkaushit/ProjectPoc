@@ -1,1 +1,1 @@
-select * from Product;
+select * from mentor;
